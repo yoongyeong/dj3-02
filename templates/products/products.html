@@ -1,0 +1,162 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block head %}
+<style>
+  .slider__custom--pagination {
+    bottom: 17.4rem;
+  }
+</style>
+{% endblock head %}
+
+{% block content %}
+
+<!-- SLIDER -->
+<section>
+  <div id="slider" class="splide">
+    <div class="splide__arrows">
+      <button class="-mt-32 splide__arrow--prev splide__arrow">
+        <i class="fas fa-chevron-left"></i>
+      </button>
+      <button class="-mt-32 splide__arrow--next splide__arrow">
+        <i class="fas fa-chevron-right"></i>
+      </button>
+    </div>
+    <div class="splide__track">
+      <div class="splide__list">
+        {% if products %}
+        {% for product in products %}
+        {% if product.is_on_slide %}
+        <div class="relative splide__slide">
+          <img src="{{ product.image_main.url }}" alt="Tipe {{ product.name }}" class="object-cover h-64 mx-auto mb-56">
+          <div class="absolute bottom-0 z-10 mx-5 mb-4 overflow-hidden bg-white rounded-md shadow-lg">
+            <div class="p-4">
+              <div class="flex justify-between pb-3">
+                <div>
+                  <p class="text-sm text-gray-800">TIPE</p>
+                  <h2 class="text-lg font-bold text-gray-800" style="text-transform: uppercase;">{{ product.name }}</h2>
+                </div>
+                <p class="text-sm font-bold text-blue-500">{{ product.cluster }}</p>
+              </div>
+              <p class="overflow-hidden text-gray-700 text-md"
+                style="text-overflow: ellipsis; line-clamp: 3; -webkit-line-clamp: 3; display: -webkit-box; -webkit-box-orient: vertical;">
+                {{product.description}}</p>
+              <div class="flex justify-between">
+                <div class="block my-4">
+                  <div class="flex mb-2">
+                    <div class="flex">
+                      <i class="mx-2 my-auto text-gray-600 fas fa-bed"></i>
+                      <p class="text-sm text-gray-700">{{product.bedrooms}}</p>
+                    </div>
+                    <div class="flex ml-2">
+                      <i class="mx-2 my-auto text-gray-600 fas fa-toilet"></i>
+                      <p class="text-sm text-gray-700">{{product.bathrooms}}</p>
+                    </div>
+                  </div>
+                  <div class="flex">
+                    <i class="mx-2 my-auto text-gray-600 fas fa-vector-square"></i>
+                    <p class="text-sm text-gray-700 ">{{product.area_width}}m x {{product.area_length}}m</p>
+                  </div>
+                </div>
+                <div class="flex self-end h-auto ">
+                  <a href="./product-detail.html" class="p-2 text-base font-bold text-blue-500">Pelajari lebih
+                    lanjut</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endif %}
+
+        {% endfor %}
+        {% endif %}
+      </div>
+    </div>
+  </div>
+
+  <div class="pb-3 mx-12 mt-4 shadow-lg">
+    <div class="w-auto h-2 bg-blue-500"></div>
+    <div class="flex h-4 mt-2 bg-white">
+      <button class="flex content-center m-auto">
+        <h1 class="font-bold text-center text-blue-500 ">Find your Dream House</h1>
+        <i class="mx-2 my-auto text-blue-500 fas fa-search"></i>
+      </button>
+    </div>
+    <div class="flex justify-center mx-auto">
+      <i class="mt-3 text-center text-blue-500 fas fa-chevron-down"></i>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCT LIST -->
+<section class="my-8">
+  {% if products %}
+  {% for product in products %}
+  <div class="mx-5 my-6 overflow-hidden rounded-md shadow-lg">
+    <img class="h-48" src="{{ product.image_main.url }}" alt="">
+    <div class="p-4">
+      <div class="flex justify-between pb-3">
+        <div>
+          <p class="text-sm text-gray-800">TIPE</p>
+          <h2 class="font-bold text-gray-800" style="text-transform: uppercase;">{{ product.name }}</h2>
+        </div>
+        <p class="text-sm font-bold text-blue-500">{{ product.cluster }}</p>
+      </div>
+      <p class="text-gray-700 text-md ">{{ product.description }}</p>
+      <div class="flex justify-between">
+        <div class="block my-4">
+          <div class="flex mb-2">
+            <div class="flex">
+              <i class="mx-2 my-auto text-gray-600 fas fa-bed"></i>
+              <p class="text-sm text-gray-700">{{ product.bedrooms }}</p>
+            </div>
+            <div class="flex ml-2">
+              <i class="mx-2 my-auto text-gray-600 fas fa-toilet"></i>
+              <p class="text-sm text-gray-700">{{ product.bathrooms }}</p>
+            </div>
+          </div>
+          <div class="flex">
+            <i class="mx-2 my-auto text-gray-600 fas fa-vector-square"></i>
+            <p class="text-sm text-gray-700 ">{{ product.area_width }}m x {{ product.area_length }}m</p>
+          </div>
+        </div>
+        <div class="flex self-end h-auto ">
+          <button class="p-2 text-base font-bold text-blue-500">Pelajari lebih lanjut</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+  {% else %}
+  <div>
+    <h1>No Home Type listed.</h1>
+  </div>
+  {% endif %}
+
+
+  <!-- PAGINATION -->
+  <div class="flex justify-between h-10 mx-4 my-6 text-white bg-blue-500 rounded-full">
+    <i class="mx-4 my-auto fas fa-chevron-left"></i>
+    <div class="my-auto">
+      <span class="">Page</span>
+      <span class="font-bold ">1</span>
+      <span class="">Page</span>
+      <span class="font-bold ">3</span>
+    </div>
+    <i class="mx-4 my-auto fas fa-chevron-right"></i>
+  </div>
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@2.4.10/dist/js/splide.min.js"></script>
+<script>
+  new Splide("#slider", {
+    type: "loop",
+    gap: "1rem",
+    classes: {
+      pagination: 'splide__pagination slider__custom--pagination'
+    }
+  }).mount();
+</script>
+
+{% endblock content %}

@@ -1,0 +1,14 @@
+{% extends 'admin/base.html' %}
+{% load static %}
+
+{% block branding %}
+<h1 id="head">
+  <img src="{% static 'img/logo_graharaya_white.png' %}" alt="Graha Raya" height='28' width='128' class='brand_img'
+    style="margin: .4rem .8rem;">
+  Admin Area
+</h1>
+{% endblock branding %}
+
+{% block extrastyle %}
+<link rel="stylesheet" href="{% static 'css/admin.css' %}">
+{% endblock extrastyle %}

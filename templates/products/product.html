@@ -1,0 +1,130 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block head %}
+<style>
+  .slider__custom--pagination {
+    bottom: 17.4rem;
+  }
+</style>
+{% endblock head %}
+
+{% block content %}
+
+<!-- SLIDER -->
+<section id="slider" class="splide">
+  <div class="splide__track">
+    <div class="splide__list">
+      <div class="splide__slide">
+        <img src="./img/Asset-11@4x.png" alt="Amaranta 1" class="object-cover w-auto h-64">
+      </div>
+      <div class="splide__slide">
+        <img src="./img/Asset-7@4x.png" alt="Amaranta 2" class="object-cover w-auto h-64">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCT SHORT SPECS -->
+<section class="p-6">
+  <p class="text-sm font-bold text-blue-500">Cluster Ayana</p>
+  <div class="my-2">
+    <p class="text-lg text-gray-800">TIPE</p>
+    <h2 class="text-xl font-bold text-gray-800">AMARANTA</h2>
+  </div>
+  <p class="my-2 text-gray-700 text-md">
+    Proident ipsum incididunt mollit minim cillum deserunt est est aute ipsum. </p>
+  <div class="grid grid-cols-6 row-gap-2 my-4">
+    <div class="flex justify-center col-span-1 col-start-1 col-end-2 my-2">
+      <i class="mx-2 my-auto text-gray-600 fas fa-bed"></i>
+    </div>
+    <p class="col-span-5 col-start-2 my-auto text-gray-700">Kamar Tidur: 2</p>
+    <div class="flex justify-center col-span-1 col-start-1 col-end-2 my-2">
+      <i class="mx-2 my-auto text-gray-600 fas fa-toilet"></i>
+    </div>
+    <p class="col-span-5 col-start-2 my-auto text-gray-700">Kamar Mandi: 2</p>
+    <div class="flex justify-center col-span-1 col-start-1 col-end-2 my-2">
+      <i class="mx-2 my-auto text-gray-600 fas fa-vector-square"></i>
+    </div>
+    <p class="col-span-5 col-start-2 my-auto text-gray-700">Luas Tanah: 60m x 58m</p>
+  </div>
+
+  <div class="flex content-center justify-center mt-6 ">
+    <a href="#" class="shadow-md btn btn-blue">Contact Us</a>
+  </div>
+</section>
+
+<!-- PRODUCT DETAIL SPECS -->
+<section class="px-6 py-8 bg-gray-200">
+  <h1 class="text-xl font-bold text-gray-900">Detail Specification</h1>
+  <dl>
+    <dt>Struktur</dt>
+    <dd>Pondasi Mini Pie</dd>
+    <dd>Sloof Beton Bertulang</dd>
+    <dd>Rangka Atap Baja Ringan</dd>
+    <dd>Struktur Atas Beton Bertulang</dd>
+
+    <dt>Kusen</dt>
+    <dd>Pintu Aluminium + Kayu</dd>
+    <dd>Jendela Aluminium + Kayu</dd>
+
+    <dt>Lantai</dt>
+    <dd>Ruang Dalam Keramik</dd>
+    <dd>Carport Paving Block</dd>
+  </dl>
+</section>
+
+<!-- RECOMMENDATIONS -->
+<section class="my-6">
+  <h1 class="my-4 text-xl font-bold text-center text-gray-900"> Other types you might like</h1>
+  <div class="mx-5 overflow-hidden rounded-lg shadow-lg">
+    <img class="h-48 bg-gray-400" src="" alt="">
+    <div class="p-4">
+      <div class="flex justify-between pb-3">
+        <div>
+          <p class="text-sm text-gray-800">TIPE</p>
+          <h2 class="font-bold text-gray-800">AMARANTA</h2>
+        </div>
+        <p class="text-sm font-bold text-blue-500">Cluster Ayana</p>
+      </div>
+      <p class="text-gray-700 text-md ">
+        Non reprehenderit in do do magna velit. Enim ex culpa aliquip proident
+        labore esse. Lorem nulla ullamco et veniam culpa... </p>
+      <div class="flex justify-between">
+        <div class="block my-4">
+          <div class="flex mb-2">
+            <div class="flex">
+              <i class="mx-2 my-auto text-gray-600 fas fa-bed"></i>
+              <p class="text-sm text-gray-700">2</p>
+            </div>
+            <div class="flex ml-2">
+              <i class="mx-2 my-auto text-gray-600 fas fa-toilet"></i>
+              <p class="text-sm text-gray-700">2</p>
+            </div>
+          </div>
+          <div class="flex">
+            <i class="mx-2 my-auto text-gray-600 fas fa-vector-square"></i>
+            <p class="text-sm text-gray-700 ">60m x 58m</p>
+          </div>
+        </div>
+        <div class="flex self-end h-auto ">
+          <button class="p-2 text-base font-bold text-blue-500">Pelajari lebih lanjut</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@2.4.10/dist/js/splide.min.js"></script>
+<script>
+  new Splide("#slider", {
+    type: "loop",
+    gap: "1rem",
+    classes: {
+      pagination: 'splide__pagination slider__custom--pagination'
+    }
+  }).mount();
+</script>
+
+{% endblock content %}

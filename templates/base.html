@@ -1,0 +1,293 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.10.2/css/all.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@2.4.8/dist/css/splide.min.css">
+
+  <style>
+    .active {
+      display: block;
+    }
+  </style>
+  {% block head %}
+  {% endblock head %}
+  <title>Graha Raya</title>
+</head>
+
+<body>
+  <nav class="sticky top-0 z-20 w-full p-2 my-auto bg-white shadow-lg md:flex md:justify-between">
+    <div class="flex flex-row justify-between w-full my-auto">
+      <a class="flex justify-center h-10 ml-2" href="{% url 'index' %}">
+        <img class="w-auto h-6 my-auto" src="{% static 'img/logo_graharaya.png' %}" alt="Logo Graha Raya">
+      </a>
+      <p id="hamburgerbtn" class="my-auto cursor-pointer md:hidden">
+        <i class="mx-2 my-auto text-gray-800 fas fa-bars"></i>
+      </p>
+    </div>
+
+    <ul class="hidden px-4 py-4 md:py-0 md:my-auto sm:my-3 md:flex md:flex-row" id="mobileMenu">
+      <li class="mx-3 my-2 whitespace-no-wrap cursor-pointer"><a>Profil Kami</a></li>
+      <li class="mx-3 my-2 cursor-pointer"><a>Produk</a></li>
+      <li class="mx-3 my-2 cursor-pointer"><a>Berita</a></li>
+      <li class="mx-3 my-2 cursor-pointer"><a>Fasilitas</a></li>
+      <li class="mx-3 my-2 cursor-pointer"><a>Surroundings</a></li>
+      <li class="mx-3 my-2 cursor-pointer"><a>Promo</a></li>
+      <div class="flex w-full">
+        <input placeholder="Search"
+          class="w-full h-8 px-2 bg-gray-100 border border-gray-300 border-solid rounded-md md:hidden search-box">
+        </input>
+        <span class="my-auto cursor-pointer">
+          <i class="ml-4 text-sm text-gray-800 fas fa-search"></i>
+        </span>
+      </div>
+    </ul>
+  </nav>
+
+  {% block content %}
+  {% endblock content %}
+
+  <!-- FOOTER -->
+  <section id="footer">
+    <div class="relative">
+      <div id="map" class="mt-8 h-vh-80"></div>
+
+      <div class="top-0 hidden w-auto h-auto p-4 mt-12 ml-8 leading-tight bg-white bg-opacity-75 md:absolute md:block">
+        <div class="h-3 -mx-4 -mt-4 bg-blue-500"></div>
+        <h1 class="mt-4 font-bold text-gray-900">Explor Daerah Sekitar Graha Raya</h1>
+        <p class="w-64 mt-2 text-sm text-gray-900">Non ex proident officia labore cillum ex reprehenderit velit
+          consequat in
+          officia
+          eu eiusmod.</p>
+        <div class="flex content-center">
+          <div class="flex content-center h-10 pl-1 pr-5 my-auto mt-4">
+            <h1 class="my-auto mr-2 text-sm text-center text-gray-900">Showing:</h1>
+          </div>
+          <div class="flex content-center justify-between w-full h-10 px-4 mt-4 -ml-4 bg-white rounded-full shadow-md">
+            <select name="surroundings" id="surroundings"
+              class="w-full h-full text-sm font-bold text-gray-900 bg-transparent focus:outline-none">
+              <option value="1">Food and Beverage</option>
+              <option value="2">Shopping</option>
+              <option value="3">Entertainment</option>
+              <option value="4">Office</option>
+              <option value="5">Hospitals</option>
+              <option value="6">Educations</option>
+              <option value="7">Transportation</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="absolute top-0 left-auto right-auto w-10/12 h-auto p-4 mx-4 mt-12 leading-tight bg-white bg-opacity-75 md:hidden">
+        <div class="h-3 -mx-4 -mt-4 bg-blue-500"></div>
+        <h1 class="mt-4 font-bold text-gray-900">Explor Daerah Sekitar Graha Raya</h1>
+        <p class="mt-2 text-sm text-gray-900">Non ex proident officia labore cillum ex reprehenderit velit consequat in
+          officia
+          eu eiusmod.</p>
+        <div class="flex content-center">
+          <div class="flex content-center h-10 pl-1 pr-5 my-auto mt-4">
+            <h1 class="my-auto mr-2 text-sm text-center text-gray-900">Showing:</h1>
+          </div>
+          <button
+            class="flex content-center justify-between w-full h-12 px-4 mt-4 -ml-4 bg-white rounded-full shadow-md">
+            <h1 class="my-auto text-sm font-bold text-center text-gray-900">Food and Beverage</h1>
+            <i class="my-auto ml-4 text-gray-900 fas fa-chevron-down"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="relative hidden p-10 text-white md:block"
+      style="background: linear-gradient(150deg, rgba(0,161,214,1) 0%, rgba(0,119,169,1) 100%);">
+      <div class="relative z-10 flex max-w-5xl pt-8 mx-auto">
+        <div class="w-1/2 mr-8">
+          <h1 class="text-xl font-bold">Silakan hubungi kami</h1>
+          <p class="text-sm">Tim kami akan segera menghubungi Anda kembali dalam waktu dekat.</p>
+          <div class="block max-w-lg mx-auto mt-6">
+            <div class="flex my-2">
+              <div class="flex w-8 h-8 mx-2">
+                <i class="m-auto fas fa-phone-alt"></i>
+              </div>
+              <p class="w-full">(021) 5312 3000</p>
+            </div>
+            <div class="flex my-2">
+              <div class="flex w-8 h-8 mx-2">
+                <i class="m-auto fas fa-fax"></i>
+              </div>
+              <p class="w-full">(021) 5312 4000</p>
+            </div>
+            <div class="flex my-2">
+              <div class="flex w-8 h-8 mx-2">
+                <i class="m-auto fas fa-envelope"></i>
+              </div>
+              <p class="w-full">mycompanyemail@myhosting.com</p>
+            </div>
+            <div class="flex my-2">
+              <div class="flex w-8 h-8 mx-2">
+                <i class="m-auto fas fa-map-marker-alt"></i>
+              </div>
+              <p class="w-full">Lorem Lorem Lorem quis dolor veniam aliquip exercitation
+                adipisicing laboris commodo
+                occaecat dolore.</p>
+            </div>
+          </div>
+        </div>
+        <div class="mt-20 mb-32 bg-white border border-white opacity-25"></div>
+        <div class="w-1/2 ml-8">
+          <h1 class="text-xl font-bold">atau Tinggalkan Pesan</h1>
+          <div class="block pt-4 pb-8">
+            <form action="">
+              <input placeholder="First Name"
+                class="w-full h-12 pl-4 my-2 text-gray-900 border rounded-lg shadow-lg"></input>
+              <input placeholder="Email"
+                class="w-full h-12 pl-4 my-2 text-gray-900 border rounded-lg shadow-lg"></input>
+              <input placeholder="Subject"
+                class="w-full h-12 pl-4 my-2 text-gray-900 border rounded-lg shadow-lg"></input>
+              <textarea placeholder="Your message"
+                class="w-full h-32 py-3 pl-4 my-2 text-gray-900 border rounded-lg shadow-lg"></textarea>
+              <div class="flex content-center justify-end">
+                <a href="#" class=" btn btn-white">Send Message
+                  <i class="m-auto text-blue-500 fas fa-arrow-right"></i></a>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <div class="relative z-10">
+        <div class="flex items-center justify-between">
+          <img class="w-auto h-10 my-4" src="{% static 'img/logo_graharaya_white.png' %}" alt="Logo GrahaRaya">
+
+        </div>
+        <div class="flex justify-between mt-6 mb-2">
+          <div class="flex my-auto">
+            <i class="mr-8 text-2xl ext-white fab fa-facebook"></i>
+            <i class="mr-8 text-2xl text-white fab fa-twitter"></i>
+            <i class="text-2xl text-white fab fa-instagram"></i>
+          </div>
+          <div class="flex my-auto">
+            <div class="flex h-10">
+              <a href="#" class="my-auto text-lg">Tentang Kami</a>
+            </div>
+            <div class="flex h-10 ml-8">
+              <a href="#" class="my-auto text-lg">Fasilitas</a>
+            </div>
+            <div class="flex h-10 ml-8">
+              <a href="#" class="my-auto text-lg">Berita</a>
+            </div>
+            <div class="flex h-10 ml-8">
+              <a href="#" class="my-auto text-lg">Sitemap</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="absolute bottom-0 right-0 z-0 w-2/3">
+        <img class="absolute bottom-0 object-cover h-auto" src="{% static 'img/graha-design-element3.png' %}" alt="">
+      </div>
+    </div>
+
+    <div class="relative p-6 text-white md:hidden"
+      style="background: linear-gradient(150deg, rgba(0,161,214,1) 0%, rgba(0,119,169,1) 100%);">
+      <div>
+        <h1 class="mt-4 text-xl font-bold">Silakan hubungi kami</h1>
+        <p class="text-sm">Tim kami akan segera menghubungi Anda kembali dalam waktu dekat.</p>
+      </div>
+      <div class="block mt-6">
+        <div class="flex my-2">
+          <div class="flex w-8 h-8 mx-2">
+            <i class="m-auto fas fa-phone-alt"></i>
+          </div>
+          <p class="w-full">(021) 5312 3000</p>
+        </div>
+        <div class="flex my-2">
+          <div class="flex w-8 h-8 mx-2">
+            <i class="m-auto fas fa-fax"></i>
+          </div>
+          <p class="w-full">(021) 5312 4000</p>
+        </div>
+        <div class="flex my-2">
+          <div class="flex w-8 h-8 mx-2">
+            <i class="m-auto fas fa-envelope"></i>
+          </div>
+          <p class="w-full">mycompanyemail@myhosting.com</p>
+        </div>
+        <div class="flex my-2">
+          <div class="flex w-8 h-8 mx-2">
+            <i class="m-auto fas fa-map-marker-alt"></i>
+          </div>
+          <p class="w-full">Lorem Lorem Lorem quis dolor veniam aliquip exercitation
+            adipisicing laboris commodo
+            occaecat dolore.</p>
+        </div>
+      </div>
+      <hr class="m-5 bg-white opacity-25 ">
+      <h1 class="text-xl font-bold">atau Tinggalkan Pesan</h1>
+      <div class="relative z-10 block pt-4 pb-8">
+        <form action="">
+          <input placeholder="First Name"
+            class="w-full h-12 pl-4 my-2 text-gray-900 border rounded-lg shadow-lg"></input>
+          <input placeholder="Email" class="w-full h-12 pl-4 my-2 text-gray-900 border rounded-lg shadow-lg"></input>
+          <input placeholder="Subject" class="w-full h-12 pl-4 my-2 text-gray-900 border rounded-lg shadow-lg"></input>
+          <textarea placeholder="Your message"
+            class="w-full h-32 py-3 pl-4 my-2 text-gray-900 border rounded-lg shadow-lg"></textarea>
+          <div class="flex content-center justify-end">
+            <a href="#" class=" btn btn-white">Send Message
+              <i class="m-auto text-blue-500 fas fa-arrow-right"></i></a>
+          </div>
+        </form>
+      </div>
+      <div class="relative z-10">
+        <img class="w-auto h-8 my-4" src="{% static 'img/logo_graharaya_white.png' %}" alt="Logo GrahaRaya">
+        <div class="flex h-10">
+          <a href="#" class="my-auto text-md">Tentang Kami</a>
+        </div>
+        <div class="flex h-10">
+          <a href="#" class="my-auto text-md">Fasilitas</a>
+        </div>
+        <div class="flex h-10">
+          <a href="#" class="my-auto text-md">Berita</a>
+        </div>
+        <div class="flex h-10">
+          <a href="#" class="my-auto text-md">Sitemap</a>
+        </div>
+        <div class="flex mt-6 mb-2">
+          <i class="mr-8 text-2xl ext-white fab fa-facebook"></i>
+          <i class="mr-8 text-2xl text-white fab fa-twitter"></i>
+          <i class="text-2xl text-white fab fa-instagram"></i>
+        </div>
+      </div>
+      <div class="absolute bottom-0 right-0 z-0 w-full">
+        <img class="absolute bottom-0 object-cover h-auto" src="{% static 'img/graha-design-element3.png' %}" alt="">
+      </div>
+    </div>
+    <div class="flex justify-center h-6 text-xs text-white bg-blue-800">
+      <span class="my-auto">
+        Made with <span class="text-red-600 ">❤</span> by Kevin Pratama</span>
+    </div>
+  </section>
+
+  <script>
+    let hamburger = document.getElementById('hamburgerbtn');
+
+    let mobileMenu = document.getElementById('mobileMenu');
+
+    hamburger.addEventListener('click', function () {
+      mobileMenu.classList.toggle('active');
+    });
+  </script>
+
+
+  <script src="{% static 'js/gmap.js' %}"></script>
+  <script defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCQlWoiCP0nrV0Sfu3JqkAQZYdUPDmlbgk&callback=initMap">
+  </script>
+
+</body>
+
+</html>
